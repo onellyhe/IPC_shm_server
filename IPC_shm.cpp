@@ -1,6 +1,7 @@
 #ifndef __IPC_SHM_HPP__
 #include "IPC_shm.hpp"
 
+// g++ -c IPC_shm.cpp
 IPC_shm::IPC_shm()
 {
     skKey = IPC_PRIVATE;

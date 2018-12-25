@@ -23,8 +23,8 @@ HEADERS += \
 #adding dynamic links of CAFFE and dependencies
 
 #caffe
-INCLUDEPATH += /home/onelly/git/quantize_ssd/include /home/onelly/git/quantize_ssd/build/src
-LIBS += -L/home/onelly/git/quantize_ssd/build/lib
+INCLUDEPATH += /home/onelly/tsq/caffe-master/include /home/onelly/tsq/caffe-master/build/src
+LIBS += -L/home/onelly/tsq/caffe-master/build/lib
 LIBS += -lcaffe
 
 #cuda

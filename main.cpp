@@ -25,7 +25,7 @@ static int sigFlag = 0;
 
 const char shm_name[SHM_QUEUE_NAME][32] =
 {
-    "/dev/shm/imageshm001"/*,"/dev/shm/imageshm002",
+    "/data/vdetection/0/imageshm0"/*,"/dev/shm/imageshm002",
     "/dev/shm/imageshm003","/dev/shm/imageshm004",
     "/dev/shm/imageshm005","/dev/shm/imageshm006",
     "/dev/shm/imageshm007","/dev/shm/imageshm008"*/
@@ -69,15 +69,19 @@ typedef struct
     volatile   int status;
     unsigned int datalen1;
     unsigned int datalen2;
-    unsigned long frames;
+    unsigned int frames;//
+    unsigned int poslen;//
     unsigned long frametime;
+    unsigned int fps;
+    unsigned int detlen;
     char pos[128];
+    char recognition[1024000];
     unsigned int h;
     unsigned int w;
     unsigned int c;
     unsigned int s;
-    unsigned char data1[(SHM_VALUE_SIZE-208)/2];
-    unsigned char data2[(SHM_VALUE_SIZE-208)/2];
+    unsigned char data1[(SHM_VALUE_SIZE - 216 - 1024000)/2];
+    unsigned char data2[(SHM_VALUE_SIZE - 216 - 1024000)/2];
 }IMAGEINFO;
 
 typedef struct {
@@ -351,6 +355,7 @@ static void *image_show(void *arg)
                     cv::Mat m(p_imageinfo->w,p_imageinfo->h,CV_8UC3);
                     m.data = p_imageinfo->data2;
                     m = m.reshape(0, p_imageinfo->h);
+                    cv::imshow("attention",m);
                     cv::imshow("detection", m);
                 }
                 else

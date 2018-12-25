@@ -10,7 +10,7 @@
 
 #define SHM_NAME_NUM 	25
 #define SHM_NAME_SIZE 	32
-#define SHM_VALUE_SIZE 	1024*1024*30
+#define SHM_VALUE_SIZE 	1024*1024*31
 
 typedef struct
 {
